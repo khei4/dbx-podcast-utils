@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:rawvoice="http://www.rawvoice.com/rawvoiceRssModule/" version="2.0">
+    <channel>
+        <title>test-title radio</title>
+        <link>https://www.example.com</link>
+        <description>
+            The full length description for your podcast
+        </description>
+        <language>en-us</language>
+        <itunes:category text="Technology"/>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:image href="image_url" />
+        <copyright>hoge copyright reserved</copyright>
+
+        <item>
+          <title>Episode 0</title>
+          <link>https://www.example.com</link>
+          <pubDate></pubDate>
+          <itunes:explicit>no</itunes:explicit>
+          <description>description</description>
+          <enclosure url="mp3 url" length="57577" type="audio/mpeg"/>
+          <guid>glocally unique identifier</guid>
+        </item>
+    </channel>
+</rss>
