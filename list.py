@@ -1,7 +1,6 @@
 import dropbox
 import os
 import argparse
-from urllib.parse import urlparse, parse_qs, urlunparse
 
 DROPBOX_ACCESS_TOKEN = os.environ.get("DROPBOX_ACCESS_TOKEN")
 
@@ -28,10 +27,10 @@ def get_dropbox_links(token, sort_by):
                     else:
                         print(f"共有リンクの取得に失敗しました。エラー: {err}")
                         continue
-                # リンクとメタデータを保存
+                link = link.replace("www.dropbox.com", "dl.dropboxusercontent.com")
+                link = link.replace("?dl=0", "")
                 links.append((entry, link))
 
-        # ソート基準に応じてソート
         if sort_by == "name":
             sorted_links = sorted(links, key=lambda x: x[0].name.lower())
         elif sort_by == "date":
@@ -41,14 +40,13 @@ def get_dropbox_links(token, sort_by):
         else:
             raise ValueError("Unsupported sort option. Choose 'name' or 'date'.")
 
-        # ソートされたリンクを表示
         for entry, link in sorted_links:
             print(
-                f"ファイル名: {entry.name}, アップロード日時: {entry.client_modified}, リンク: {link}"
+                f"name: {entry.name}, modified date: {entry.client_modified}, url: {link}"
             )
 
     except dropbox.exceptions.ApiError as err:
-        print(f"フォルダ一覧の取得に失敗しました。エラー: {err}")
+        print(f"failed to list folder : {err}")
 
 
 if __name__ == "__main__":
