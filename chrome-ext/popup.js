@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function getPageDetails() {
     const details = { url: window.location.href, body: document.body.innerText };
+    // FIXME: Update the URL to Text2Speech server
     fetch('http://localhost:8000', {
         method: 'POST',
         headers: {
